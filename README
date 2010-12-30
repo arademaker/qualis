@@ -6,7 +6,7 @@ Descrição
 
 Meu objetivo é oferecer a tabela Qualis em um formato estruturado e
 processável. Os dados ainda serão transformados em RDF para serem
-usados em outro projeto que estou trabalhando, Lattes2RDF.
+usados em outro projeto que estou trabalhando, o Lattes2RDF [2].
 
 Atualmente apenas as seguintes áreas tiveram sua tabela qualis processada:
 
@@ -14,6 +14,21 @@ Atualmente apenas as seguintes áreas tiveram sua tabela qualis processada:
  * CIÊNCIA DA COMPUTAÇÃO
  * ADMINISTRAÇÃO, CIÊNCIAS CONTÁBEIS E TURISMO
  * ECONOMIA
+
+Os dados foram recuperados do site da CAPES [1]. Para cada área acima,
+uma planilha foi baixada do site da CAPES e os dados processados da
+seguinte forma:
+
+A primeira tarefa foi corrigir manualmente alguns ISSN. Os ISSN
+iniciados com "0" foram salvos como datas pelo Excel e seu valor
+original perdido. Apenas então as planilhas foram então importadas
+para o software R [3]. No R, outras correções em massa foram feitas
+como alteração de caracteres especiais e verificações básicas. Os
+dados foram então exportados para arquivo TEXT (qualis-XXXX.text) onde
+foram separadas da coluna "titulo" informações como: (1) o ano em que o
+periódico terminou; e (2) sua relação com outros periódicos que foram
+criados a partir dele. 
+
 
 TODO
 ----
@@ -28,9 +43,12 @@ TODO
  * Acrescentar informações sobre tabelas QUALIS anteriores, permitindo
    assim a análise das mudanças de avaliação dos periódicos.
 
+ * Possíveis correções e verificações dos dados.
+
 
 Links
 -----
 
- * http://qualis.capes.gov.br/webqualis/
- * https://github.com/arademaker/lattes2RDF
+ [1] http://qualis.capes.gov.br/webqualis/
+ [2] https://github.com/arademaker/lattes2RDF
+ [3] http://www.r-project.org/
