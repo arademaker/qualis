@@ -8,7 +8,8 @@ Meu objetivo é oferecer a tabela Qualis em um formato estruturado e
 processável. Os dados ainda serão transformados em RDF para serem
 usados em outro projeto que estou trabalhando, o Lattes2RDF [2].
 
-Atualmente apenas as seguintes áreas tiveram sua tabela qualis processada:
+Atualmente apenas as seguintes áreas tiveram sua tabela qualis
+processada:
 
  * MATEMÁTICA / PROBABILIDADE E ESTATÍSTICA
  * CIÊNCIA DA COMPUTAÇÃO
