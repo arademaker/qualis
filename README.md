@@ -1,10 +1,9 @@
-CAPES Qualis
-============
 
-Descrição
----------
+# CAPES Qualis
 
-Meu objetivo é oferecer a tabela Qualis em um formato estruturado e
+## Descrição
+
+Meu objetivo é oferecer a tabela QUALIS em um formato estruturado e
 processável. Os dados ainda serão transformados em RDF para serem
 usados em outro projeto que estou trabalhando, o Lattes2RDF [2].
 
@@ -17,18 +16,12 @@ processada:
  * ECONOMIA
 
 As planilhas das áreas foram baixadas do site da CAPES [1]. Em
-seguida, os arquivos foram processados da seguinte forma:
+seguida, os dados foram limpos usando o Emacs e R [3]. Informações
+como referências a descontinuidade do periódico, desmembramento ou
+agrupamento de periódico em outros e outras observações foram
+separadas do título do periódico.
 
-As planilhas foram importadas para o software R [3]. No R, outras
-correções em massa foram feitas como alteração de caracteres especiais
-e verificações básicas. Os dados foram então exportados para arquivo
-TEXT (qualis-XXXX.text) onde foram separadas da coluna "titulo"
-informações como: (1) o ano em que o periódico terminou; e (2) sua
-relação com outros periódicos que foram criados a partir dele.
-
-
-TODO
-----
+## TODO
 
  * Transformar em RDF o data.frame "qualis".
  * Acrescentar informações de outras áreas.
@@ -39,9 +32,9 @@ TODO
  * Possíveis correções e verificações dos dados.
 
 
-Links
------
+## Links
 
- [1] http://qualis.capes.gov.br/webqualis/
- [2] https://github.com/arademaker/lattes2RDF
- [3] http://www.r-project.org/
+ * [1] http://qualis.capes.gov.br/webqualis/
+ * [2] https://github.com/arademaker/lattes2RDF
+ * [3] http://www.r-project.org/
+
