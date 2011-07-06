@@ -1,6 +1,8 @@
 
 library(R.oo)
 
+# Lendo arquivos das areas
+
 names <- dir(pattern = "area-[0-9]{2}.csv")
 areas <- NULL
 for(n in names){
@@ -20,8 +22,9 @@ for(n in names){
 }
 
 
-tmp <- split(areas, factor(areas$area))
+## Testando duplicatas invalidas
 
+tmp <- split(areas, factor(areas$area))
 fac <- function(dt){
   t.1 <- apply(table(dt$ISSN,dt$estrato), 1, function(l) length(l[l > 0]))
   newdt <- data.frame(issn = names(t.1), count = t.1)
@@ -31,4 +34,14 @@ tmp.2 <- lapply(tmp, function(x) {
   t <- fac(x)
   t[t$count > 1,]
 })
+
+
+## convertendo para N3
+areas$issn <- gsub("-","", areas$ISSN)
+
+out <- areas[,c(7,3,2,4,5)]
+out <- areas[!is.na(areas$issn),]
+out <- out[order(out$issn),]
+write.table(out, file = "areas.text", row.names = FALSE, sep="|", quote = FALSE)
+
 
