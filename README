@@ -16,34 +16,26 @@ processada:
  * ADMINISTRAÇÃO, CIÊNCIAS CONTÁBEIS E TURISMO
  * ECONOMIA
 
-Os dados foram recuperados do site da CAPES [1]. Para cada área acima,
-uma planilha foi baixada do site da CAPES e os dados processados da
-seguinte forma:
+As planilhas das áreas foram baixadas do site da CAPES [1]. Em
+seguida, os arquivos foram processados da seguinte forma:
 
-A primeira tarefa foi corrigir manualmente alguns ISSN. Os ISSN
-iniciados com "0" foram salvos como datas pelo Excel e seu valor
-original perdido. Apenas então as planilhas foram então importadas
-para o software R [3]. No R, outras correções em massa foram feitas
-como alteração de caracteres especiais e verificações básicas. Os
-dados foram então exportados para arquivo TEXT (qualis-XXXX.text) onde
-foram separadas da coluna "titulo" informações como: (1) o ano em que o
-periódico terminou; e (2) sua relação com outros periódicos que foram
-criados a partir dele. 
+As planilhas foram importadas para o software R [3]. No R, outras
+correções em massa foram feitas como alteração de caracteres especiais
+e verificações básicas. Os dados foram então exportados para arquivo
+TEXT (qualis-XXXX.text) onde foram separadas da coluna "titulo"
+informações como: (1) o ano em que o periódico terminou; e (2) sua
+relação com outros periódicos que foram criados a partir dele.
 
 
 TODO
 ----
 
  * Transformar em RDF o data.frame "qualis".
-
  * Acrescentar informações de outras áreas.
-
  * Acrescentar informações sobre periódicos como: homepage, links
    entre periódicos etc.
-
  * Acrescentar informações sobre tabelas QUALIS anteriores, permitindo
    assim a análise das mudanças de avaliação dos periódicos.
-
  * Possíveis correções e verificações dos dados.
 
 
