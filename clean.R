@@ -18,3 +18,17 @@ for(n in names){
   area[lines,"obs"] <- titulos.o
   areas <- rbind(areas,area)
 }
+
+
+tmp <- split(areas, factor(areas$area))
+
+fac <- function(dt){
+  t.1 <- apply(table(dt$ISSN,dt$estrato), 1, function(l) length(l[l > 0]))
+  newdt <- data.frame(issn = names(t.1), count = t.1)
+}
+
+tmp.2 <- lapply(tmp, function(x) {
+  t <- fac(x)
+  t[t$count > 1,]
+})
+
