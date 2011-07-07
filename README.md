@@ -45,7 +45,6 @@ O cwm foi usado para converter de N3 para RDF
    entre periódicos etc.
  * Acrescentar informações sobre tabelas QUALIS anteriores, permitindo
    assim a análise das mudanças de avaliação dos periódicos.
- * Possíveis correções e verificações dos dados.
 
 ## Links
 
