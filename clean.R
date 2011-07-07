@@ -38,6 +38,8 @@ tmp.2 <- lapply(tmp, function(x) {
 
 ## convertendo para N3
 areas$issn <- gsub("-","", areas$ISSN)
+lines <- grep("\"", areas$titulo)
+areas[lines, "titulo"] <- gsub("\"", "", areas[lines,"titulo"])
 
 out <- areas[,c(7,3,2,4,5)]
 out <- areas[!is.na(areas$issn),]

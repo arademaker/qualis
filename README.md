@@ -21,16 +21,29 @@ como referências a descontinuidade do periódico, desmembramento ou
 agrupamento de periódico em outros e outras observações foram
 separadas do título do periódico.
 
+## 
+
+O script clean.R é usado para juntar os arquivos das áreas e limpar os
+dados:
+
+    R CMD batch clean.R
+
+O script awk gera um arquivo N3
+
+    awk -f to-rdf.awk areas.text  > qualis.n3
+
+O cwm foi usado para converter de N3 para RDF
+
+    cwm --n3 areas.n3 --rdf > qualis.rdf
+
 ## TODO
 
- * Transformar em RDF o data.frame "qualis".
  * Acrescentar informações de outras áreas.
  * Acrescentar informações sobre periódicos como: homepage, links
    entre periódicos etc.
  * Acrescentar informações sobre tabelas QUALIS anteriores, permitindo
    assim a análise das mudanças de avaliação dos periódicos.
  * Possíveis correções e verificações dos dados.
-
 
 ## Links
 
