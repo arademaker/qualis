@@ -10,10 +10,12 @@ usados em outro projeto que estou trabalhando, o Lattes2RDF [2].
 Atualmente apenas as seguintes áreas tiveram sua tabela qualis
 processada:
 
- * MATEMÁTICA / PROBABILIDADE E ESTATÍSTICA
- * CIÊNCIA DA COMPUTAÇÃO
- * ADMINISTRAÇÃO, CIÊNCIAS CONTÁBEIS E TURISMO
- * ECONOMIA
+ * Matemática, Probabilidade e Estatística
+ * Ciência da Computação
+ * Direito
+ * Administração, Ciências Contábeis e Turismo
+ * Economia
+ * Interdisciplinar
 
 As planilhas das áreas foram baixadas do site da CAPES [1]. Em
 seguida, os dados foram limpos usando o Emacs e R [3]. Informações
