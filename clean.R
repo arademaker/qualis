@@ -44,6 +44,6 @@ areas[lines, "titulo"] <- gsub("\"", "", areas[lines,"titulo"])
 out <- areas[,c(7,3,2,4,5)]
 out <- areas[!is.na(areas$issn),]
 out <- out[order(out$issn),]
-write.table(out, file = "areas.text", row.names = FALSE, sep="|", quote = FALSE)
+write.table(out, file = "qualis.text", row.names = FALSE, sep="|", quote = FALSE)
 
 

@@ -32,11 +32,11 @@ dados:
 
 O script awk gera um arquivo N3
 
-    awk -f to-rdf.awk areas.text  > qualis.n3
+    awk -f to-rdf.awk qualis.text  > qualis.n3
 
 O cwm foi usado para converter de N3 para RDF
 
-    cwm --n3 areas.n3 --rdf > qualis.rdf
+    cwm --n3 qualis.n3 --rdf > qualis.rdf
 
 ## TODO
 
