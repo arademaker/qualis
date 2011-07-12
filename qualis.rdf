@@ -41911,19 +41911,12 @@
 
     <bibo:Journal rdf:about="urn:ISSN:10204989">
         <dc:title>Pan American Journal of Public Health</dc:title>
-        <dc:title>Revista Panamericana de Salud Pública</dc:title>
         <bibo:issn>10204989</bibo:issn>
         <hasScore rdf:parseType="Resource">
             <rdf:type rdf:resource="http://www.fgv.br/terms/Score"/>
             <anoBase>2008</anoBase>
             <area>Administração, Ciências Contábeis e Turismo</area>
             <estrato>A1</estrato>
-        </hasScore>
-        <hasScore rdf:parseType="Resource">
-            <rdf:type rdf:resource="http://www.fgv.br/terms/Score"/>
-            <anoBase>2008</anoBase>
-            <area>Interdisciplinar</area>
-            <estrato>A2</estrato>
         </hasScore>
         <hasScore rdf:parseType="Resource">
             <rdf:type rdf:resource="http://www.fgv.br/terms/Score"/>
