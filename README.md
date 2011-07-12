@@ -16,6 +16,7 @@ processada:
  * Administração, Ciências Contábeis e Turismo
  * Economia
  * Interdisciplinar
+ * História
 
 As planilhas das áreas foram baixadas do site da CAPES [1]. Em
 seguida, os dados foram limpos usando o Emacs e R [3]. Informações
