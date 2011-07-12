@@ -41922,12 +41922,6 @@
         <hasScore rdf:parseType="Resource">
             <rdf:type rdf:resource="http://www.fgv.br/terms/Score"/>
             <anoBase>2008</anoBase>
-            <area>Administração, Ciências Contábeis e Turismo</area>
-            <estrato>A1</estrato>
-        </hasScore>
-        <hasScore rdf:parseType="Resource">
-            <rdf:type rdf:resource="http://www.fgv.br/terms/Score"/>
-            <anoBase>2008</anoBase>
             <area>Interdisciplinar</area>
             <estrato>A2</estrato>
         </hasScore>
