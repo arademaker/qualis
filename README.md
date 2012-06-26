@@ -18,32 +18,23 @@ processada:
  * Interdisciplinar
  * História
 
-As planilhas das áreas foram baixadas do site da CAPES [1]. Em
-seguida, os dados foram limpos usando o Emacs e R [3]. Informações
-como referências a descontinuidade do periódico, desmembramento ou
-agrupamento de periódico em outros e outras observações foram
-separadas do título do periódico.
+As planilhas das áreas foram baixadas do site da CAPES [1] em
+26/Jun/2012.
 
-## 
+O arquivo to-rdf.lisp contém o código de geração do RDF a partir dos
+arquivos baixados do site da CAPES. Como uso a triple store Allegro
+Graph, este código só poderá ser rodado no Allegro Lisp.
 
-O script clean.R é usado para juntar os arquivos das áreas e limpar os
-dados:
-
-    R CMD batch clean.R
-
-O script awk gera um arquivo N3
-
-    awk -f to-rdf.awk qualis.text  > qualis.n3
-
-O cwm foi usado para converter de N3 para RDF
-
-    cwm --n3 qualis.n3 --rdf > qualis.rdf
+Os arquivos baixados do site foram manualmente mesclados em um único
+arquivo CSV. O separador dos campos foi alterado de tabulação para
+"|". Finalmente, ocorrências de aspas foram removidas. Este arquivo
+final foi então a entrada para o script Lisp.
 
 ## TODO
 
  * Acrescentar informações de outras áreas.
  * Acrescentar informações sobre periódicos como: homepage, links
-   entre periódicos etc.
+   entre periódicos etc. Possívelmente usando algum crawler na Web.
  * Acrescentar informações sobre tabelas QUALIS anteriores, permitindo
    assim a análise das mudanças de avaliação dos periódicos.
 
@@ -51,5 +42,4 @@ O cwm foi usado para converter de N3 para RDF
 
  * [1] http://qualis.capes.gov.br/webqualis/
  * [2] https://github.com/arademaker/lattes2RDF
- * [3] http://www.r-project.org/
 
