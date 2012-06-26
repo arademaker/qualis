@@ -30,6 +30,11 @@ arquivo CSV. O separador dos campos foi alterado de tabulação para
 "|". Finalmente, ocorrências de aspas foram removidas. Este arquivo
 final foi então a entrada para o script Lisp.
 
+Os dados podem ser acessados online usando o SPARQL endpoint
+
+http://logics.emap.fgv.br:10035/repositories/qualis
+
+
 ## TODO
 
  * Acrescentar informações de outras áreas.
