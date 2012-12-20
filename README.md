@@ -10,13 +10,13 @@ usados em outro projeto que estou trabalhando, o Lattes2RDF [2].
 Atualmente apenas as seguintes áreas tiveram sua tabela qualis
 processada:
 
- * Matemática, Probabilidade e Estatística
- * Ciência da Computação
- * Direito
- * Administração, Ciências Contábeis e Turismo
- * Economia
- * Interdisciplinar
- * História
+* Matemática, Probabilidade e Estatística
+* Ciência da Computação
+* Direito
+* Administração, Ciências Contábeis e Turismo
+* Economia
+* Interdisciplinar
+* História
 
 As planilhas das áreas foram baixadas do site da CAPES [1] em
 26/Jun/2012.
@@ -30,10 +30,17 @@ arquivo CSV. O separador dos campos foi alterado de tabulação para
 "|". Finalmente, ocorrências de aspas foram removidas. Este arquivo
 final foi então a entrada para o script Lisp.
 
+# SPARQL Endpoint
+
 Os dados podem ser acessados online usando o SPARQL endpoint
 
 http://logics.emap.fgv.br:10035/repositories/qualis
 
+Exemplo de uso:
+
+    roqet -p http://logics.emap.fgv.br:10035/repositories/qualis -e "select distinct ?p ?t { ?p rdf:type ?c ; dc:title ?t . }"
+
+Para saber mais sobre o comando roqet visite o site da biblioteca Redland [3].
 
 ## TODO
 
@@ -45,6 +52,6 @@ http://logics.emap.fgv.br:10035/repositories/qualis
 
 ## Links
 
- * [1] http://qualis.capes.gov.br/webqualis/
- * [2] https://github.com/arademaker/lattes2RDF
-
+* [1] http://qualis.capes.gov.br/webqualis/
+* [2] https://github.com/arademaker/lattes2RDF
+* [3] http://librdf.org/rasqal/roqet.html

@@ -5,12 +5,15 @@
 ;; transferido para o servidor da amazon antes de rodar o script.
 
 (ql:quickload :fare-csv)
-(require :agraph) 
+(require :agraph "/usr/local/agraph-client/agraph4.fasl") 
 
 (in-package :db.agraph.user)
 
-(create-triple-store "qualis")
-
+(open-triple-store "qualis"
+		   :triple-store-class 'remote-triple-store
+		   ; add :user and :password
+		   :server "127.0.0.1")
+					
 (enable-!-reader)
 (enable-print-decoded t)
 
@@ -42,42 +45,43 @@
 			    summing (* j i)) 11)))))
 
 
-(defun make-res (str)
+(defun res (str)
   (resource (format nil "http://www.fgv.br/qualis/area/~a" str)))
 
 
-(defparameter *AREAS* (list `("ECONOMIA" . ,(make-res "Economia"))
-			    `("ADMINISTRAÇÃO, CIÊNCIAS CONTÁBEIS E TURISMO" . ,(make-res "Administracao"))
-			    `("DIREITO" . ,(make-res "Direito"))
-			    `("CIÊNCIA DA COMPUTAÇÃO" . ,(make-res "Computacao"))
-			    `("MATEMÁTICA, PROBABILIDADE E ESTATÍSTICA" . ,(make-res "Matematica"))
-			    `("HISTÓRIA" . ,(make-res "Historia"))
-			    `("INTERDISCIPLINAR" . ,(make-res "Interdisciplinar"))))
+(defparameter *AREAS* (list `("ECONOMIA" . ,(res "Economia"))
+			    `("ADMINISTRAÇÃO, CIÊNCIAS CONTÁBEIS E TURISMO" . ,(res "Administracao"))
+			    `("DIREITO" . ,(res "Direito"))
+			    `("CIÊNCIA DA COMPUTAÇÃO" . ,(res "Computacao"))
+			    `("MATEMÁTICA, PROBABILIDADE E ESTATÍSTICA" . ,(res "Matematica"))
+			    `("HISTÓRIA" . ,(res "Historia"))
+			    `("INTERDISCIPLINAR" . ,(res "Interdisciplinar"))))
 
 
 (defun insert-record (alist)
-  (let* ((res   (resource (concatenate 'string "usn:ISSN:" (nth 0 alist))))
-	 (news  nil))
+  " Add triples possible with duplications. "
+  (let  ((res (resource (concatenate 'string "usn:ISSN:" (nth 0 alist)))))
     (with-blank-nodes (aval)
-      (push (list res !rdf:type !bibo:Journal) news)
-      (push (list res !dc:title (literal (nth 1 alist))) news)
-      (push (list res !bibo:issn (literal (nth 0 alist))) news)
-      (push (list res !fgvterms:hasScore aval) news)
-      (push (list aval !rdf:type !fgvterms:Score) news)
-      (push (list aval !fgvterms:area (cdr (assoc (nth 2 alist) *AREAS* :test #'string=))) news)
-      (push (list aval !fgvterms:estrato (literal (nth 3 alist))) news)
-      (push (list aval !fgvterms:anoBase (literal "2012")) news)
-      (push (list aval !fgvterms:classification (literal (nth 4 alist))) news))
-    (dolist (n news)
-      (if (not (get-triple :s (nth 0 n) :p (nth 1 n) :o (nth 2 n)))
-	  (add-triple (nth 0 n) (nth 1 n) (nth 2 n))))))
+      (add-triple res !rdf:type !bibo:Journal)
+      (add-triple res !dc:title (literal (nth 2 alist)))
+      (add-triple res !bibo:issn (literal (nth 0 alist)))
+      (add-triple res !fgvterms:hasScore aval)
+      (add-triple aval !rdf:type !fgvterms:Score)
+      (add-triple aval !fgvterms:area (cdr (assoc (nth 1 alist) *AREAS* :test #'string=)))
+      (add-triple aval !fgvterms:estrato (literal (nth 3 alist)))
+      (add-triple aval !fgvterms:anoBase (literal "2012")))))
 
 (defun import-csv-file (filename)
   (let ((novos (fare-csv:read-csv-file filename)))
     (dolist (reg (subseq novos 1)) ; ignore heading
-      (print reg)
       (if (check-issn (nth 0 reg))
 	  (insert-record reg)))))
 
+(defun check-file (filename)
+  (let ((novos (fare-csv:read-csv-file filename)))
+    (push (mapcar #'check-issn 
+		  (mapcar #'car (subseq novos 1))))))
 
-(import-csv-file "/tmp/qualis-3.text")
+(dolist (file (directory "*.csv"))
+  (import-csv-file file))
+
